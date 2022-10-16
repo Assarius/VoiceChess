@@ -13,7 +13,7 @@ class Menu:
 
     def draw_menu(WIN):
         pygame.init()
-        menu = pygame_menu.Menu('Blindfold chess', WIN.get_width(), WIN.get_height(), 
+        menu = pygame_menu.Menu('VoiceChess', WIN.get_width(), WIN.get_height(), 
                                 theme=pygame_menu.themes.THEME_BLUE)
         menu.add.button('SINGLEPLAYER', Menu.start_game_single)
         menu.add.button('MULTIPLAYER', Menu.start_game_multi)
