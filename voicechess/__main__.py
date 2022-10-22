@@ -1,10 +1,11 @@
 import game
 import menu
 import fields
+import window
 
 
 if __name__ == "__main__":
     fields.init()
-    WIN = game.Window()
-    WIN.prepare_window()
-    menu.Menu.draw_menu(WIN.get_window())
+    WIN = window.Window()
+    MENU = menu.Menu(WIN.get_window())
+    MENU.draw_menu()
