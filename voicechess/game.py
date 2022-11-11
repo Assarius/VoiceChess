@@ -1,6 +1,3 @@
-from math import ceil
-import re
-import time
 import pygame
 
 from sunfish import sunfish
@@ -22,7 +19,6 @@ class Game:
 
         while run:
             clock.tick(60)
-
             pygame.event.pump()
                 # if event.type == pygame.QUIT:
                 #     exit()
@@ -36,16 +32,35 @@ class Game:
                 pygame.event.poll()
                 if players == 1:
                     player1 = player.Player("Gracz", BOARD)
-                    player1.player_move(hist, hist_moves)
+                    if hist[-1].score <= -sunfish.MATE_LOWER:
+                        BOARD.display_text('Przegrałeś')
+                        break
+                    player1.player_move(hist, hist_moves, player=1)
                     BOARD.draw_pieces(BOARD, hist[-1].rotate(), hist_moves)
+                    if hist[-1].score <= -sunfish.MATE_LOWER:
+                        BOARD.display_text('Wygrałeś')
+                        break
                     pygame.display.update()
                     pygame.event.poll()
                     player1.engine_move(searcher, hist, hist_moves)
                     pygame.display.update()
                     pygame.event.poll()
 
-                # else:
-                #     player1 = Player("Gracz_1")
-                #     player2 = Player("Gracz_2")
-
-                    
+                else:
+                    player1 = player.Player("Gracz_1", BOARD)
+                    player2 = player.Player("Gracz_2", BOARD)
+                    player1.player_move(hist, hist_moves, player=1)
+                    BOARD.draw_pieces(BOARD, hist[-1].rotate(), hist_moves)
+                    if hist[-1].score <= -sunfish.MATE_LOWER:
+                        BOARD.display_text(f'{player1.name} wygrał')
+                        break
+                    pygame.display.update()
+                    pygame.event.poll()
+                    player2.player_move(hist, hist_moves, player=2)
+                    BOARD.draw_pieces(BOARD, hist[-1].rotate(), hist_moves)
+                    if hist[-1].score <= -sunfish.MATE_LOWER:
+                        BOARD.display_text(f'{player2.name} wygrał')
+                        break
+                    pygame.display.update()
+                    pygame.event.poll()
+        pygame.quit()

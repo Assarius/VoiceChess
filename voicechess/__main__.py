@@ -1,4 +1,3 @@
-import game
 import menu
 import fields
 import window

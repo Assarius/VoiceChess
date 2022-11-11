@@ -1,6 +1,5 @@
 import re
 import speech_recognition as sr
-# import game
 
 r = sr.Recognizer()
 r.dynamic_energy_threshold = False
@@ -15,10 +14,10 @@ def checkChar(txt):
     else:
         return 2
 
-def get_pos():
+def get_pos(BOARD, player_name):
     with sr.Microphone() as source:
         try:
-            print("Podaj ruch jaki chcesz wykonać")
+            BOARD.display_text(f'{player_name} podaj ruch')
             audio = r.listen(source, timeout=5)
             text = r.recognize_google(audio, language='pl-PL')
             move = ""
