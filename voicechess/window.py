@@ -1,7 +1,9 @@
 import pygame
 import pyautogui
 
+import menu
 import fields
+import window
 
 class Window:
     def __init__(self):
@@ -57,3 +59,7 @@ class Window:
         fields.field_G = pygame.transform.scale(fields.field_G, scale)
         fields.field_H = pygame.transform.scale(fields.field_H, scale)
         
+fields.init()
+WIN = window.Window()
+MENU = menu.Menu(WIN.get_window())
+MENU.draw_menu()

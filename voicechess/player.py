@@ -14,7 +14,6 @@ class Player:
     def player_move(self, hist, hist_moves, player):
         print(f'Ruch gracza {self.name}')
         self.BOARD.display_text(f'Ruch gracza {self.name}')
-        # self.BOARD.display_history(hist_moves)
         move = None
         tmp_move = None
         pygame.display.update()
@@ -44,9 +43,7 @@ class Player:
 
     def engine_move(self, searcher, hist, hist_moves):
         print(f'Ruch gracza {self.engine}')
-        # pass
         self.BOARD.display_text(f'Ruch gracza {self.engine}')
-        # self.BOARD.display_history(hist_moves)
         # Fire up the engine to look for a move.
         start = time.time()
         real_score = None
@@ -63,4 +60,3 @@ class Player:
         print(f"Ruch {self.engine}: {text}")
         self.BOARD.display_text(f'Ruch {self.engine}: {text}')
         hist.append(hist[-1].move(move))
-        # return real_score
