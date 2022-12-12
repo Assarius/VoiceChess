@@ -4,10 +4,10 @@ import speech_recognition as sr
 r = sr.Recognizer()
 r.dynamic_energy_threshold = False
 
-def checkChar(txt):
+def check_input(text):
     ## Sprawdzanie wprowadzonego polecenia wg kryteriów
-    if txt is not None and len(txt) == 4:
-        if re.match("(^[a-hA-H)])([1-8])([a-hA-H])([1-8])", txt):
+    if text is not None and len(text) == 4:
+        if re.match("(^[a-hA-H)])([1-8])([a-hA-H])([1-8])", text):
             return 0
         else:
             return 1
@@ -24,7 +24,7 @@ def get_pos(BOARD, player_name):
             for char in str(text):
                 if char != " ":
                     move += char
-            check_val = checkChar(move)
+            check_val = check_input(move)
             if check_val == 0:
                 print(f"Wszystko ok. {move}")
                 return move.lower()

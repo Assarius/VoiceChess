@@ -11,7 +11,7 @@ class Window:
         self.WIDTH, self.HEIGHT = fields.empty_field.get_width(),\
                                   fields.empty_field.get_height()
         WIDTH, HEIGHT = 16 * self.WIDTH, 10 * self.HEIGHT
-        self.WIN = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE) #, pygame.FULLSCREEN)
+        self.WIN = pygame.display.set_mode((WIDTH, HEIGHT), pygame.RESIZABLE)
         pygame.display.set_caption("VoiceChess")
 
     def get_window(self):

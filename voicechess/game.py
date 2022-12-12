@@ -41,7 +41,7 @@ class Game:
                     pygame.display.update()
                     pygame.event.poll()
 
-                else:
+                elif players == 2:
                     player1 = player.Player("Gracz_1", BOARD)
                     player2 = player.Player("Gracz_2", BOARD)
                     player1.player_move(hist, hist_moves, player=1)
